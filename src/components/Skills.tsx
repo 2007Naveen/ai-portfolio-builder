@@ -1,30 +1,50 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { 
+  SiHtml5, 
+  SiCss3, 
+  SiJavascript, 
+  SiTypescript, 
+  SiReact, 
+  SiTailwindcss,
+  SiNodedotjs,
+  SiPython,
+  SiExpress,
+  SiPostgresql,
+  SiMongodb,
+  SiGit,
+  SiGithub,
+  SiAutodesk,
+  SiGoogle,
+  SiDocker
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
+import { VscCode } from "react-icons/vsc";
 
 const skills = {
   "Frontend Languages": [
-    { name: "HTML5", level: 95 },
-    { name: "CSS3", level: 93 },
-    { name: "JavaScript", level: 92 },
-    { name: "TypeScript", level: 90 },
-    { name: "React.js", level: 95 },
-    { name: "Tailwind CSS", level: 92 },
+    { name: "HTML5", level: 95, icon: SiHtml5 },
+    { name: "CSS3", level: 93, icon: SiCss3 },
+    { name: "JavaScript", level: 92, icon: SiJavascript },
+    { name: "TypeScript", level: 90, icon: SiTypescript },
+    { name: "React.js", level: 95, icon: SiReact },
+    { name: "Tailwind CSS", level: 92, icon: SiTailwindcss },
   ],
   "Backend Languages": [
-    { name: "Node.js", level: 88 },
-    { name: "Python", level: 85 },
-    { name: "Java", level: 80 },
-    { name: "Express.js", level: 85 },
-    { name: "PostgreSQL", level: 82 },
-    { name: "MongoDB", level: 80 },
+    { name: "Node.js", level: 88, icon: SiNodedotjs },
+    { name: "Python", level: 85, icon: SiPython },
+    { name: "Java", level: 80, icon: FaJava },
+    { name: "Express.js", level: 85, icon: SiExpress },
+    { name: "PostgreSQL", level: 82, icon: SiPostgresql },
+    { name: "MongoDB", level: 80, icon: SiMongodb },
   ],
   "Development Tools": [
-    { name: "VS Code", level: 95 },
-    { name: "Git", level: 90 },
-    { name: "GitHub", level: 90 },
-    { name: "Autodesk", level: 75 },
-    { name: "Google Developers", level: 82 },
-    { name: "Docker", level: 75 },
+    { name: "VS Code", level: 95, icon: VscCode },
+    { name: "Git", level: 90, icon: SiGit },
+    { name: "GitHub", level: 90, icon: SiGithub },
+    { name: "Autodesk", level: 75, icon: SiAutodesk },
+    { name: "Google Developers", level: 82, icon: SiGoogle },
+    { name: "Docker", level: 75, icon: SiDocker },
   ],
 };
 
@@ -77,7 +97,10 @@ export const Skills = () => {
                         transition={{ delay: 0.8 + categoryIndex * 0.2 + skillIndex * 0.1 }}
                       >
                         <div className="flex justify-between mb-2">
-                          <span className="text-foreground">{skill.name}</span>
+                          <span className="text-foreground flex items-center gap-2">
+                            <skill.icon className="w-5 h-5" />
+                            {skill.name}
+                          </span>
                           <span className="text-muted-foreground">{skill.level}%</span>
                         </div>
                         <div className="h-2 bg-muted rounded-full overflow-hidden">
