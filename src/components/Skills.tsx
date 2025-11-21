@@ -4,23 +4,29 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, Text3D, Center } from "@react-three/drei";
 
 const skills = {
-  Frontend: [
-    { name: "React", level: 95 },
+  "Frontend Languages": [
+    { name: "HTML5", level: 95 },
+    { name: "CSS3", level: 93 },
+    { name: "JavaScript", level: 92 },
     { name: "TypeScript", level: 90 },
+    { name: "React.js", level: 95 },
     { name: "Tailwind CSS", level: 92 },
-    { name: "Three.js", level: 85 },
   ],
-  Backend: [
+  "Backend Languages": [
     { name: "Node.js", level: 88 },
-    { name: "Express", level: 85 },
+    { name: "Python", level: 85 },
+    { name: "Java", level: 80 },
+    { name: "Express.js", level: 85 },
     { name: "PostgreSQL", level: 82 },
     { name: "MongoDB", level: 80 },
   ],
-  Tools: [
+  "Development Tools": [
+    { name: "VS Code", level: 95 },
     { name: "Git", level: 90 },
+    { name: "GitHub", level: 90 },
+    { name: "Autodesk", level: 75 },
+    { name: "Google Developers", level: 82 },
     { name: "Docker", level: 75 },
-    { name: "AWS", level: 78 },
-    { name: "Figma", level: 85 },
   ],
 };
 
