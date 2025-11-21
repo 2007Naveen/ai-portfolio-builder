@@ -1,7 +1,5 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere, Text3D, Center } from "@react-three/drei";
 
 const skills = {
   "Frontend Languages": [
@@ -59,29 +57,7 @@ export const Skills = () => {
             className="h-1 bg-gradient-accent mx-auto mb-12"
           />
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* 3D Visualization */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.6 }}
-              className="h-[400px] rounded-2xl overflow-hidden glassmorphism"
-            >
-              <Canvas>
-                <OrbitControls enableZoom={false} autoRotate />
-                <ambientLight intensity={0.5} />
-                <directionalLight position={[10, 10, 5]} intensity={1} />
-                <Sphere args={[2, 32, 32]} position={[0, 0, 0]}>
-                  <meshStandardMaterial
-                    color="#b74fff"
-                    wireframe
-                    emissive="#b74fff"
-                    emissiveIntensity={0.5}
-                  />
-                </Sphere>
-              </Canvas>
-            </motion.div>
-
+          <div className="max-w-4xl mx-auto">
             {/* Skills List */}
             <div className="space-y-8">
               {Object.entries(skills).map(([category, categorySkills], categoryIndex) => (
