@@ -95,8 +95,18 @@ export const Skills = () => {
               <VscCode className="w-20 h-20 text-primary-foreground" />
             </motion.div>
 
-            {/* Orbiting Skills */}
-            {allSkills.map((skill, index) => {
+            {/* Orbiting Skills Container with Continuous Rotation */}
+            <motion.div
+              className="absolute inset-0"
+              animate={isInView ? { rotate: 360 } : {}}
+              transition={{
+                duration: 60,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              {/* Orbiting Skills */}
+              {allSkills.map((skill, index) => {
               const angle = (index / allSkills.length) * 2 * Math.PI;
               const radius = 280;
               const x = Math.cos(angle) * radius;
@@ -131,13 +141,24 @@ export const Skills = () => {
                     transform: 'translate(-50%, -50%)',
                   }}
                 >
-                  <skill.icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors" />
-                  <span className="text-[8px] text-muted-foreground text-center leading-tight">
-                    {skill.name}
-                  </span>
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{
+                      duration: 60,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="flex flex-col items-center justify-center gap-1"
+                  >
+                    <skill.icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors" />
+                    <span className="text-[8px] text-muted-foreground text-center leading-tight">
+                      {skill.name}
+                    </span>
+                  </motion.div>
                 </motion.div>
               );
             })}
+            </motion.div>
           </div>
         </motion.div>
       </div>
