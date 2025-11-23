@@ -52,8 +52,14 @@ export const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const allSkills = [
+    ...skills["Frontend Languages"],
+    ...skills["Backend Languages"],
+    ...skills["Development Tools"],
+  ];
+
   return (
-    <section id="skills" className="py-20 relative">
+    <section id="skills" className="py-20 relative min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -74,38 +80,64 @@ export const Skills = () => {
             initial={{ width: 0 }}
             animate={isInView ? { width: "100px" } : {}}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="h-1 bg-gradient-accent mx-auto mb-12"
+            className="h-1 bg-gradient-accent mx-auto mb-16"
           />
 
-          <div className="max-w-4xl mx-auto">
-            {/* Skills List */}
-            <div className="space-y-8">
-              {Object.entries(skills).map(([category, categorySkills], categoryIndex) => (
+          {/* Orbital Skills Display */}
+          <div className="relative flex items-center justify-center" style={{ height: '600px' }}>
+            {/* Center Monitor */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="absolute z-10 w-40 h-40 rounded-full bg-gradient-primary flex items-center justify-center glassmorphism border-2 border-primary/30"
+            >
+              <VscCode className="w-20 h-20 text-primary-foreground" />
+            </motion.div>
+
+            {/* Orbiting Skills */}
+            {allSkills.map((skill, index) => {
+              const angle = (index / allSkills.length) * 2 * Math.PI;
+              const radius = 280;
+              const x = Math.cos(angle) * radius;
+              const y = Math.sin(angle) * radius;
+
+              return (
                 <motion.div
-                  key={category}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.6 + categoryIndex * 0.2 }}
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={
+                    isInView
+                      ? {
+                          opacity: 1,
+                          scale: 1,
+                          x: x,
+                          y: y,
+                        }
+                      : {}
+                  }
+                  transition={{
+                    delay: 0.8 + index * 0.05,
+                    duration: 0.6,
+                  }}
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.2 },
+                  }}
+                  className="absolute w-16 h-16 rounded-xl bg-background/80 backdrop-blur-sm border border-border/50 flex flex-col items-center justify-center gap-1 cursor-pointer hover:border-primary/50 transition-colors group"
+                  style={{
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)',
+                  }}
                 >
-                  <h3 className="text-xl font-semibold mb-4 text-secondary">{category}</h3>
-                  <div className="space-y-4">
-                    {categorySkills.map((skill, skillIndex) => (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ delay: 0.8 + categoryIndex * 0.2 + skillIndex * 0.1 }}
-                      >
-                        <div className="flex items-center gap-2">
-                          <skill.icon className="w-5 h-5 text-primary" />
-                          <span className="text-foreground">{skill.name}</span>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
+                  <skill.icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors" />
+                  <span className="text-[8px] text-muted-foreground text-center leading-tight">
+                    {skill.name}
+                  </span>
                 </motion.div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </motion.div>
       </div>
