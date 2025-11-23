@@ -96,20 +96,9 @@ export const Skills = () => {
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ delay: 0.8 + categoryIndex * 0.2 + skillIndex * 0.1 }}
                       >
-                        <div className="flex justify-between mb-2">
-                          <span className="text-foreground flex items-center gap-2">
-                            <skill.icon className="w-5 h-5" />
-                            {skill.name}
-                          </span>
-                          <span className="text-muted-foreground">{skill.level}%</span>
-                        </div>
-                        <div className="h-2 bg-muted rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={isInView ? { width: `${skill.level}%` } : {}}
-                            transition={{ delay: 1 + categoryIndex * 0.2 + skillIndex * 0.1, duration: 0.8 }}
-                            className="h-full bg-gradient-primary"
-                          />
+                        <div className="flex items-center gap-2">
+                          <skill.icon className="w-5 h-5 text-primary" />
+                          <span className="text-foreground">{skill.name}</span>
                         </div>
                       </motion.div>
                     ))}
