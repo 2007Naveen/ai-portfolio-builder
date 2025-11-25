@@ -43,9 +43,9 @@ const skills = {
     { name: "VS Code", icon: VscCode },
     { name: "Git", icon: SiGit },
     { name: "GitHub", icon: SiGithub },
-    { name: "Autodesk", icon: SiAutodesk },
-    { name: "Google Developers", icon: SiGoogle },
-    { name: "Docker", icon: SiDocker },
+    // { name: "Autodesk", icon: SiAutodesk },
+    // { name: "Google Developers", icon: SiGoogle },
+    // { name: "Docker", icon: SiDocker },
   ],
 };
 

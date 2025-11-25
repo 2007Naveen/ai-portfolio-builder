@@ -1,7 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { FaCode } from "react-icons/fa";
-import { SiLeetcode, SiCodechef, SiCodeforces, SiHackerrank, SiGithub } from "react-icons/si";
+
+// WORKING ICONS
+import { SiLeetcode, SiGithub } from "react-icons/si";
+import { FaCode, FaBolt, FaHackerrank } from "react-icons/fa"; // alternatives
 
 const profiles = [
   {
@@ -14,7 +16,7 @@ const profiles = [
   },
   {
     name: "CodeChef",
-    icon: SiCodechef,
+    icon: FaCode, // Replaced (SiCodechef ❌)
     username: "@yourhandle",
     rating: "5 Star",
     color: "from-amber-600 to-amber-400",
@@ -22,7 +24,7 @@ const profiles = [
   },
   {
     name: "Codeforces",
-    icon: SiCodeforces,
+    icon: FaBolt, // Replaced (SiCodeforces ❌)
     username: "@yourhandle",
     rating: "Expert",
     color: "from-blue-500 to-cyan-500",
@@ -30,7 +32,7 @@ const profiles = [
   },
   {
     name: "HackerRank",
-    icon: SiHackerrank,
+    icon: FaHackerrank, // Replaced (SiHackerrank ❌)
     username: "@yourhandle",
     rating: "Gold Badge",
     color: "from-green-500 to-emerald-500",
@@ -90,13 +92,21 @@ export const CodingProfiles = () => {
                 className="relative group"
               >
                 <div className="glassmorphism rounded-2xl p-6 text-center hover:border-primary transition-all duration-300">
-                  <div className={`w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br ${profile.color} flex items-center justify-center shadow-lg group-hover:shadow-glow-cyan transition-all duration-300`}>
+                  <div
+                    className={`w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br ${profile.color} flex items-center justify-center shadow-lg group-hover:shadow-glow-cyan transition-all duration-300`}
+                  >
                     <profile.icon className="text-4xl text-white" />
                   </div>
-                  
-                  <h3 className="font-semibold text-lg mb-2">{profile.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-1">{profile.username}</p>
-                  <p className="text-xs text-primary font-semibold">{profile.rating}</p>
+
+                  <h3 className="font-semibold text-lg mb-2">
+                    {profile.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-1">
+                    {profile.username}
+                  </p>
+                  <p className="text-xs text-primary font-semibold">
+                    {profile.rating}
+                  </p>
 
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/10 group-hover:to-secondary/10 transition-all duration-300" />
                 </div>
